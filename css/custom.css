@@ -1,0 +1,31 @@
+.row-wrapper {
+    box-shadow: 0 6px 20px rgb(0 0 0 / 20%);
+    border-radius: 12px;
+}
+
+#newTask {
+    font-size: 24px;
+}
+.btn {
+    font-size: 24px;
+}
+body {
+    background-color: rgb(249, 245, 241);
+}
+.row {
+    background-color: #FFFEFC;
+}
+.wrapper-two {
+    box-shadow: 0 6px 20px rgb(0 0 0 / 20%);
+    
+}
+.rounded-circle {
+    font-size: 35px;
+}
+ul {
+    font-size: 25px;
+}
+.remove-item {
+    float: right;
+    color: grey;
+}
