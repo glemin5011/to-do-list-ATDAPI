@@ -28,3 +28,7 @@ ul {
   float: right;
   color: grey;
 }
+.selected {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-width: 0.15rem !important;
+}

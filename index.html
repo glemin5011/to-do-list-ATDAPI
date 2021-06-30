@@ -39,8 +39,7 @@
                 type="text"
                 class="form-control"
                 id="newTask"
-                placeholder="Walk the dog (max. 69 characters)"
-                maxlength="69"
+                placeholder="Walk the dog"
               />
               <div class="d-grid col-6 mx-auto">
                 <button
@@ -57,48 +56,51 @@
       </div>
       <div class="row col-8 mx-auto wrapper-two">
         <div class="col">
-          <button class="btn btn-lg btn-light border mx-1 my-3 toggle-all">
-            All
-          </button>
-          <button class="btn btn-lg btn-light border mx-1 my-3 toggle-active">
-            Active
-          </button>
-          <button
-            class="btn btn-lg btn-light border mx-1 my-3 toggle-completed"
-          >
-            Completed
-          </button>
+          <div class="btn-group">
+            <button class="btn btn-lg btn-light border mx-1 my-3 toggle-all">
+              All
+            </button>
+            <button class="btn btn-lg btn-light border mx-1 my-3 toggle-active">
+              Active
+            </button>
+            <button
+              class="btn btn-lg btn-light border mx-1 my-3 toggle-completed"
+            >
+              Completed
+            </button>
+          </div>
+          <h4 class="text-center">
+            You have <span class="number-of-tasks"></span> tasks outstanding
+          </h4>
           <ul class="list-group list-group-flush my-2">
             <li class="list-group-item">
               <input
                 class="form-check-input rounded-circle me-1"
-                id="task1"
+                id="1"
                 type="checkbox"
                 value=""
               />
-              <label class="form-check-label pt-2" for="task1">Item One</label>
+              <label class="form-check-label pt-2" for="1">Item One</label>
               <button class="btn btn-sm remove-item border">Remove</button>
             </li>
             <li class="list-group-item">
               <input
                 class="form-check-input rounded-circle me-1"
-                id="task2"
+                id="2"
                 type="checkbox"
                 value=""
               />
-              <label class="form-check-label pt-2" for="task2">Item Two</label>
+              <label class="form-check-label pt-2" for="2">Item Two</label>
               <button class="btn btn-sm remove-item border">Remove</button>
             </li>
             <li class="list-group-item">
               <input
                 class="form-check-input rounded-circle me-1"
-                id="task3"
+                id="3"
                 type="checkbox"
                 value=""
               />
-              <label class="form-check-label pt-2" for="task3"
-                >Item Three</label
-              >
+              <label class="form-check-label pt-2" for="3">Item Three</label>
               <button class="btn btn-sm remove-item border">Remove</button>
             </li>
           </ul>

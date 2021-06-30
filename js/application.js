@@ -1,5 +1,6 @@
-//Live date
-window.onload = function () {
+//Add new task function - may need to adjust task numbering
+$(document).ready(function () {
+  //LIVE DATE
   let currentTime = new Date();
   let options = { month: "long" };
   let month = new Intl.DateTimeFormat("en-GB", options).format(currentTime);
@@ -18,57 +19,56 @@ window.onload = function () {
   document.getElementById(
     "datetime"
   ).innerHTML = `${weekday}, ${day} ${month} ${year}`;
-};
-//Event handlers for add button, remove button, etc.
 
-//Add new task (button) - may need to adjust task numbering
-$(document).ready(function () {
+  //Keeps count of number of items on the list to assign unique IDs
+  var itemAccumulator = $(".list-group-item").length;
+
+  var updateListItemCount = function () {
+    $(".number-of-tasks").html($(".list-group-item").length);
+  };
+  updateListItemCount();
   var addNewTask = function () {
     $(".list-group").append(`<li class="list-group-item">
     <input
       class="form-check-input rounded-circle me-1"
-      id="task1"
+      id="${itemAccumulator + 1}"
       type="checkbox"
       value=""
     />
-    <label class="form-check-label pt-2" for="task1">${$(
+    <label class="form-check-label pt-2" for="${itemAccumulator + 1}">${$(
       "#newTask"
     ).val()}</label>
     <button class="btn btn-sm remove-item border">Remove</button>
   </li>`);
+    return (itemAccumulator += 1);
   };
 
-  //Enter in form
+  //Add new item by enter keypress
   $("#newTask").keypress(function (event) {
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && $("#newTask").val().length !== 0) {
       event.preventDefault();
       addNewTask();
+      updateListItemCount();
+    } else if (event.keyCode === 13 && $("#newTask").val().length === 0) {
+      alert("Input can not be left blank");
     }
   });
-  //Button click
+  //Add new item button click
   $("#createNewTask").on("click", function (event) {
-    addNewTask();
+    if ($("#newTask").val().length !== 0) {
+      addNewTask();
+      updateListItemCount();
+    } else if ($("#newTask").val().length === 0) {
+      alert("Input can not be left blank");
+    }
   });
 
   //Remove button working with new items too
   $(document).on("click", ".remove-item", function () {
     $(this).parentsUntil(".list-group").remove();
+    updateListItemCount();
     console.log("Remove button was hit.");
   });
-
-  //Form check styling change
-
-  //Is active button is hit
-  // form-check-input is checked
-  //then hide the item
-
-  //May need .each()
-  /*
-  $(".toggle-active").on("click", function () {
-    if ($(".form-check-input").prop("checked")) {
-      $(".list-group-item").prop("hidden", true);
-    }
-  });*/
 
   //Show active-only tasks
   $(".toggle-active").on("click", function () {
@@ -79,6 +79,8 @@ $(document).ready(function () {
         $(this).show();
       }
     });
+    $(this).addClass("selected");
+    $(this).siblings().removeClass("selected");
   });
 
   //Show aompleted-only tasks
@@ -90,6 +92,8 @@ $(document).ready(function () {
         $(this).show();
       }
     });
+    $(this).addClass("selected");
+    $(this).siblings().removeClass("selected");
   });
 
   //Show All tasks
@@ -97,12 +101,7 @@ $(document).ready(function () {
     $(".list-group-item").each(function (i, ele) {
       $(this).show();
     });
+    $(this).addClass("selected");
+    $(this).siblings().removeClass("selected");
   });
 });
-/*
-
-});
-
-
-});
-*/
