@@ -44,7 +44,7 @@ var getAndDisplayAllTasks = function () {
     <label class="form-check-label pt-2" for="${
       task.id
     }">${task.content}</label>
-    <button class="btn btn-sm remove-item border" data-id="${
+    <button class="btn btn-sm mt-2 mt-sm-3 remove-item border" data-id="${
       task.id
     }">Remove</button>
   </li>`);
